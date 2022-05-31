@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Websockets Client</title>
+    <title>Basic room chat</title>
     <link href="/styles.css" rel="stylesheet">
     <link href="https://unpkg.com/vue-simple-notify/dist/vue-simple-notify.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -17,16 +17,16 @@
             <alerts-component :items="alerts"></alerts-component>
         </section>
         <section class="chat">
-            <h1>Websockets Tester</h1>
+            <h1>Basic room chat</h1>
             <form>
                 <input v-model="text" type="text"/>
                 <button type="submit" @click.prevent="sendChatMessage()">Send</button>
             </form>
             <!-- Tabs -->
             <div class="tab-row">
-                <button class="tab-btn" :class="{ active: activeRoom == 'general' }" @click="activeRoom = 'general'">General</button>
-                <button class="tab-btn" :class="{ active: activeRoom == 'typescript' }" @click="activeRoom = 'typescript'">TypeScript</button>
-                <button class="tab-btn" :class="{ active: activeRoom == 'nestjs' }" @click="activeRoom = 'nestjs'">NestJS</button>
+                <button class="tab-btn" :class="{ active: activeRoom == 'smart' }" @click="activeRoom = 'smart'">Smart</button>
+                <button class="tab-btn" :class="{ active: activeRoom == 'king' }" @click="activeRoom = 'king'">King</button>
+                <button class="tab-btn" :class="{ active: activeRoom == 'investor' }" @click="activeRoom = 'investor'">Investor</button>
             </div>
             <div class="tab-row">
                 Status: {{ isMemberOfActiveRoom ? 'Joined' : 'NOT Joined' }} <button @click="toggleRoomMembership()">{{ isMemberOfActiveRoom ? 'Leave' : 'Join' }}</button>
@@ -49,17 +49,17 @@
                 username: '',
                 text: '',
                 messages: {
-                    general: [],
-                    typescript: [],
-                    nestjs: []
+                    smart: [],
+                    king: [],
+                    investor: []
                 },
                 socket: { chat: null, alerts: null },
                 alerts: [],
-                activeRoom: 'general',
+                activeRoom: 'smart',
                 rooms: {
-                    general: false,
-                    typescript: false,
-                    nestjs: false
+                    smart: false,
+                    king: false,
+                    investor: false
                 }
             },
             methods: {
